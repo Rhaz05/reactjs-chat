@@ -7,7 +7,13 @@ import { logger } from './util/logger.util.js'
 
 const app = express()
 
-app.use(cors({ origin: 'true' }))
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173']
+app.use(
+  cors({
+    credentials: true,
+    origin: allowedOrigins,
+  })
+)
 app.use(express.json())
 app.use(morgan('dev'))
 
